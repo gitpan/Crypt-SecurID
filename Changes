@@ -1,0 +1,6 @@
+Revision history for Perl extension Crypt::SecurID.
+
+0.01  Sun Jan 26 15:30:19 2003
+	- original version; created by h2xs 1.21 with options
+		-XA -n Crypt::SecurID
+

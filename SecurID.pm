@@ -1,7 +1,7 @@
 #
 # SecurID.pm - SecurID emulator module
 #
-# $Id: SecurID.pm,v 1.3 2003/01/27 03:00:48 pliam Exp $
+# $Id: SecurID.pm,v 1.8 2003/03/02 19:17:47 pliam Exp $
 #
 
 # Note: This is pathetic glue code.  It is not a class, but rather 
@@ -20,7 +20,7 @@ use warnings;
 use Crypt::securid;
 
 use vars qw($VERSION);
-$VERSION = sprintf("%d.%02d", (q$Name: SecurID_Release_0_03 $ =~ /\d+/g));
+$VERSION = sprintf("%d.%02d", (q$Name: SecurID_Release_0_04 $ =~ /\d+/g));
 
 ## new wrapper
 sub new {
@@ -65,13 +65,13 @@ __END__
 
 =head1 NAME
 
-Crypt::SecurID - module for generating and verifying SecurID time hash codes
+Crypt::SecurID - Generate and verify SecurID time hash codes
 
 =head1 SYNOPSIS
 
   use Crypt::SecurID;
 
-  # create a token object tied to hex key string
+  # create a token object tied to a 64-bit hex string key
   $token = Crypt::SecurID->new(hexkey => "0123456789abcdef"); 
   # equivalently
   $token = Crypt::SecurID->new; 
@@ -106,32 +106,29 @@ Considerable speculation about the weakness of the hash algorithm
 has been put forth.  AFAIK, it is still an open problem to determine 
 how many distinct codes are necessary to recover the secret key.
 
-OTOH, for on-sided authentication models (like SSL), even a weak 
+OTOH, for one-sided authentication models (like SSL), even a weak 
 time hash based on a shared secret may provide a desirable extra
 layer of security.
 
 This module is provided for purposes of discussion and/or prototyping.
 If you need a real ACE server, buy one.
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-John Pliam E<lt>pliam@cpan.orgE<gt>, C++ wrappers, Perl module.
-I. C. Wiener E<lt>icwiener@mailru.comE<gt>, C code.
+John Pliam E<lt>pliam@cpan.orgE<gt> -- C++ wrappers, Perl module.
+
+I. C. Wiener E<lt>icwiener@mailru.comE<gt>? -- C code.
 
 =head1 SEE ALSO
 
-Mudge, Kingpin and @stake Inc, "Initial Cryptanalysis of the RSA SecurID
-Algorithm, Jan 2001.
+Mudge, Kingpin, "Initial Cryptanalysis of the RSA SecurID Algorithm", 
+Jan 2001.
 
-http://www.ima.umn.edu/~pliam/lepgen/, The home page for the 
+http://www.ima.umn.edu/~pliam/lepgen/ The home page for the 
 Low-Entropy Password Generator (LEP-Gen), an open source hardware token 
 for Linux palmtops, which includes a SecurID mode.
 
 =head1 BUGS
-
-This is beta software.  The low-level C/C++ stuff has been used for a 
-while, but this Perl module is terribly fresh meat.  Cleave at your own 
-risk.
 
 This has never been tested against a working card or ACE server, to 
 which I have no access.  Furthermore, I tried, but not too hard, to 

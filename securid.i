@@ -1,7 +1,7 @@
 /*
  * securid.i - SWIG interface declaration to SecurID class
  *
- * $Id: securid.i,v 1.5 2003/01/27 03:00:48 pliam Exp $
+ * $Id: securid.i,v 1.6 2003/01/27 04:12:57 pliam Exp $
  */
 
 /*
@@ -38,7 +38,12 @@ public:
 /* 
  * version string modified by cvs in .i file
  */ 
+
 %insert("pm") %{
+# version string
+use vars qw($VERSION);
+$VERSION = sprintf("%d.%02d", (q$Name: SecurID_Release_0_04 $ =~ /\d+/g));
+# some minimal docs
 =head1 NAME
 
 Crypt::securid - this is a low-level module which you shouldn't use

@@ -4,6 +4,10 @@ require Exporter;
 require DynaLoader;
 @ISA = qw(Exporter DynaLoader);
 
+# version string
+use vars qw($VERSION);
+$VERSION = sprintf("%d.%02d", (q$Name: SecurID_Release_0_04 $ =~ /\d+/g));
+# some minimal docs
 =head1 NAME
 
 Crypt::securid - this is a low-level module which you shouldn't use
